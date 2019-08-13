@@ -1,0 +1,33 @@
+[
+  {
+    "name": "nginx",
+    "image": "${app_image}",
+    "instance_type" : "${instance_type}",
+    "aws_ami" : "${ami_id}",
+ #  "aws_ebs_volume" : "${volume}",
+    "aws_key_pair"  : "${key-pair}",
+    "cpu": ${ec2_cpu},
+    "memory": ${ec2_memory},
+    "networkMode": "bridge",
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/test-app",
+          "awslogs-region": "${aws_region}",
+          "awslogs-stream-prefix": "ecs"
+        }
+    },
+    
+     "essentials": true,
+     "cpu" : 1024,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 0
+      }
+    ]
+  }
+]
+
+
+
